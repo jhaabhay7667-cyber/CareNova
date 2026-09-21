@@ -1,0 +1,4049 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="CareNova Hospital - Modern private hospital and healthcare website">
+
+    <title>CareNova Hospital | Advanced Healthcare</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==========================================
+         TOAST NOTIFICATION
+    =========================================== -->
+
+    <div class="toast-wrap" id="toastWrap"></div>
+
+    <div class="modal" id="modal" aria-hidden="true">
+        <div class="modal-card" id="modalContent"></div>
+    </div>
+
+
+    <!-- ==========================================
+         APPOINTMENT MODAL
+    =========================================== -->
+
+    <div class="modal"
+         id="appointmentModal"
+         aria-hidden="true">
+
+        <div class="modal-card">
+
+            <button class="modal-close"
+                    data-close="appointmentModal"
+                    aria-label="Close">
+                &times;
+            </button>
+
+            <span class="eyebrow">
+                BOOK AN APPOINTMENT
+            </span>
+
+            <h2>
+                Schedule your visit
+            </h2>
+
+            <p class="muted">
+                Choose a department, doctor and convenient time.
+            </p>
+
+
+            <form id="appointmentForm"
+                  class="form-grid">
+
+                <label>
+                    Full name
+
+                    <input
+                        required
+                        name="name"
+                        placeholder="Your name">
+                </label>
+
+
+                <label>
+                    Phone number
+
+                    <input
+                        required
+                        name="phone"
+                        type="tel"
+                        placeholder="+91 98765 43210">
+                </label>
+
+
+                <label>
+                    Department
+
+                    <select required name="department">
+
+                        <option value="">
+                            Select department
+                        </option>
+
+                        <option>
+                            Cardiology
+                        </option>
+
+                        <option>
+                            Neurology
+                        </option>
+
+                        <option>
+                            Orthopedics
+                        </option>
+
+                        <option>
+                            Gastroenterology
+                        </option>
+
+                        <option>
+                            Pediatrics
+                        </option>
+
+                        <option>
+                            Dermatology
+                        </option>
+
+                    </select>
+                </label>
+
+
+                <label>
+                    Preferred date
+
+                    <input
+                        required
+                        name="date"
+                        type="date">
+                </label>
+
+
+                <label>
+                    Preferred time
+
+                    <select required name="time">
+
+                        <option value="">
+                            Select time
+                        </option>
+
+                        <option>
+                            09:00 AM
+                        </option>
+
+                        <option>
+                            10:30 AM
+                        </option>
+
+                        <option>
+                            12:00 PM
+                        </option>
+
+                        <option>
+                            03:00 PM
+                        </option>
+
+                        <option>
+                            05:00 PM
+                        </option>
+
+                    </select>
+                </label>
+
+
+                <label>
+                    Visit type
+
+                    <select name="visitType">
+
+                        <option>
+                            In-person consultation
+                        </option>
+
+                        <option>
+                            Video consultation
+                        </option>
+
+                    </select>
+                </label>
+
+
+                <label class="full">
+                    Reason / message
+
+                    <textarea
+                        name="message"
+                        rows="3"
+                        placeholder="Tell us briefly how we can help">
+                    </textarea>
+                </label>
+
+
+                <button
+                    class="btn btn-primary full"
+                    type="submit">
+
+                    Confirm appointment
+
+                    <span>→</span>
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         PATIENT PORTAL MODAL
+    =========================================== -->
+
+    <div class="modal"
+         id="patientModal"
+         aria-hidden="true">
+
+        <div class="modal-card patient-card">
+
+            <button class="modal-close"
+                    data-close="patientModal"
+                    aria-label="Close">
+
+                &times;
+
+            </button>
+
+
+            <span class="eyebrow">
+                PATIENT PORTAL
+            </span>
+
+
+            <h2>
+                Welcome back
+            </h2>
+
+
+            <p class="muted">
+                Access appointments, reports and prescriptions
+                from one place.
+            </p>
+
+
+            <form id="patientLogin"
+                  class="form-grid one">
+
+                <label>
+                    Email or patient ID
+
+                    <input
+                        required
+                        placeholder="patient@example.com">
+                </label>
+
+
+                <label>
+                    Password
+
+                    <input
+                        required
+                        type="password"
+                        placeholder="••••••••">
+                </label>
+
+
+                <button
+                    class="btn btn-primary"
+                    type="submit">
+
+                    Sign in securely
+
+                </button>
+
+            </form>
+
+
+            <div class="demo-login">
+
+                <strong>
+                    Demo access
+                </strong>
+
+                <br>
+
+                Patient ID:
+                CN-10284
+
+                &nbsp;
+
+                Password:
+                demo123
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         HEADER / NAVIGATION
+    =========================================== -->
+
+    <header class="site-header">
+
+        <div class="container nav">
+
+
+            <!-- LOGO -->
+
+            <a href="#home"
+               class="logo">
+
+                <span class="logo-mark">
+                    +
+                </span>
+
+                <span>
+
+                    Care<span>Nova</span>
+
+                    <small>
+                        HOSPITAL
+                    </small>
+
+                </span>
+
+            </a>
+
+
+            <!-- NAVIGATION -->
+
+            <nav id="mainNav">
+
+                <a href="#home"
+                   class="active">
+                    Home
+                </a>
+
+                <a href="#services">
+                    Services
+                </a>
+
+                <a href="#doctors">
+                    Doctors
+                </a>
+
+                <a href="#facilities">
+                    Facilities
+                </a>
+
+                <a href="#gallery">
+                    Gallery
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+                <a href="#contact">
+                    Contact
+                </a>
+
+            </nav>
+
+
+            <!-- NAVIGATION BUTTONS -->
+
+            <div class="nav-actions">
+
+                <button
+                    class="icon-btn search-toggle"
+                    aria-label="Search">
+
+                    ⌕
+
+                </button>
+
+
+                <button
+                    class="btn btn-outline patient-open">
+
+                    Patient Portal
+
+                </button>
+
+
+                <button
+                    class="btn btn-primary appointment-open">
+
+                    Book Appointment
+
+                </button>
+
+
+                <button
+                    class="menu-toggle"
+                    aria-label="Open menu">
+
+                    ☰
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEARCH BAR -->
+
+        <div class="search-bar"
+             id="searchBar">
+
+            <div class="container">
+
+                <input
+                    id="siteSearch"
+                    placeholder="Search doctors, departments, services...">
+
+                <button id="searchBtn">
+                    Search
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main>
+
+        <!-- ======================================
+             HERO SECTION
+        ======================================= -->
+
+        <section class="hero"
+                 id="home">
+
+            <div class="container hero-grid">
+
+
+                <!-- HERO TEXT -->
+
+                <div class="hero-copy">
+
+                    <div class="status-pill">
+
+                        <span class="pulse"></span>
+
+                        24/7 Emergency & Critical Care
+
+                    </div>
+
+
+                    <h1>
+
+                        Healthcare that puts
+                        <em>you</em> first.
+
+                    </h1>
+
+
+                    <p>
+
+                        Advanced medical expertise,
+                        compassionate care and smart technology —
+                        all under one roof.
+
+                    </p>
+
+
+                    <div class="hero-actions">
+
+                        <button
+                            class="btn btn-primary btn-lg appointment-open">
+
+                            Book an Appointment
+
+                            <span>→</span>
+
+                        </button>
+
+
+                        <a
+                            href="#services"
+                            class="btn btn-light btn-lg">
+
+                            Explore Services
+                        </a>
+
+                    </div>
+
+
+                    <!-- TRUST INFORMATION -->
+
+                    <div class="trust-row">
+
+                        <div class="avatar-stack">
+
+                            <span>AK</span>
+
+                            <span>RS</span>
+
+                            <span>PM</span>
+
+                            <span>+</span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                50,000+
+                            </strong>
+
+                            <small>
+                                Patients cared for
+                            </small>
+
+                        </div>
+
+
+                        <div class="rating">
+
+                            <strong>
+                                4.9/5
+                            </strong>
+
+                            <small>
+                                Patient satisfaction
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HERO VISUAL -->
+
+                <div class="hero-visual">
+
+                    <div class="hero-orbit orbit-1"></div>
+
+                    <div class="hero-orbit orbit-2"></div>
+
+
+                    <div class="doctor-scene">
+
+                        <div class="scene-top">
+
+                            <span>
+                                ● LIVE
+                            </span>
+
+                            <small>
+                                Cardiology Unit
+                            </small>
+
+                        </div>
+
+
+                        <div class="doctor-placeholder">
+
+                            <div class="doctor-head"></div>
+
+                            <div class="doctor-body"></div>
+
+                        </div>
+
+
+                        <!-- HEART RATE CARD -->
+
+                        <div class="floating-card vitals">
+
+                            <span class="mini-icon">
+                                ♥
+                            </span>
+
+                            <div>
+
+                                <small>
+                                    Heart rate
+                                </small>
+
+                                <strong>
+                                    72
+                                    <i>BPM</i>
+                                </strong>
+
+                            </div>
+
+                            <b>
+                                ↗
+                            </b>
+
+                        </div>
+
+
+                        <!-- EMERGENCY CARD -->
+
+                        <div class="floating-card emergency">
+
+                            <span class="phone">
+                                ☎
+                            </span>
+
+                            <div>
+
+                                <small>
+                                    Emergency
+                                </small>
+
+                                <strong>
+                                    1800-CARE-24
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hero-circle">
+                        ✚
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             QUICK ACTIONS
+        ======================================= -->
+
+        <section class="quick-strip">
+
+            <div class="container quick-grid">
+
+
+                <button
+                    class="quick-item appointment-open">
+
+                    <span>📅</span>
+
+                    <div>
+
+                        <strong>
+                            Book Appointment
+                        </strong>
+
+                        <small>
+                            Find a doctor & time
+                        </small>
+
+                    </div>
+
+                    <b>→</b>
+
+                </button>
+
+
+                <button
+                    class="quick-item"
+                    id="findDoctor">
+
+                    <span>⌕</span>
+
+                    <div>
+
+                        <strong>
+                            Find a Doctor
+                        </strong>
+
+                        <small>
+                            Search by specialty
+                        </small>
+
+                    </div>
+
+                    <b>→</b>
+
+                </button>
+
+
+                <button
+                    class="quick-item"
+                    id="emergency">
+
+                    <span>✚</span>
+
+                    <div>
+
+                        <strong>
+                            Emergency Care
+                        </strong>
+
+                        <small>
+                            Available 24/7
+                        </small>
+
+                    </div>
+
+                    <b>→</b>
+
+                </button>
+
+
+                <button
+                    class="quick-item"
+                    id="reports">
+
+                    <span>▣</span>
+
+                    <div>
+
+                        <strong>
+                            Lab Reports
+                        </strong>
+
+                        <small>
+                            Access your results
+                        </small>
+
+                    </div>
+
+                    <b>→</b>
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             SERVICES SECTION
+        ======================================= -->
+
+        <section class="section"
+                 id="services">
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            OUR SERVICES
+                        </span>
+
+                        <h2>
+
+                            Complete care for every
+                            <br>
+
+                            <em>stage of life.</em>
+
+                        </h2>
+
+                    </div>
+
+
+                    <p>
+
+                        From preventive health checks
+                        to complex treatments, our
+                        multidisciplinary teams deliver
+                        evidence-based care with a human touch.
+
+                    </p>
+
+                </div>
+
+
+                <!-- SERVICE CARDS -->
+
+                <div class="service-grid">
+
+
+                    <article class="service-card featured">
+
+                        <div class="service-icon">
+                            ♥
+                        </div>
+
+                        <span>01</span>
+
+                        <h3>
+                            Cardiology
+                        </h3>
+
+                        <p>
+
+                            Comprehensive heart care
+                            with advanced diagnostics
+                            and minimally invasive procedures.
+
+                        </p>
+
+                        <a href="#"
+                           class="learn">
+
+                            Explore department →
+
+                        </a>
+
+                    </article>
+
+
+                    <article class="service-card">
+
+                        <div class="service-icon blue">
+                            ◈
+                        </div>
+
+                        <span>02</span>
+
+                        <h3>
+                            Neurology
+                        </h3>
+
+                        <p>
+
+                            Expert diagnosis and treatment
+                            for brain, spine and nervous
+                            system conditions.
+
+                        </p>
+
+                        <a href="#"
+                           class="learn">
+
+                            Explore department →
+
+                        </a>
+
+                    </article>
+
+
+                    <article class="service-card">
+
+                        <div class="service-icon violet">
+                            ✚
+                        </div>
+
+                        <span>03</span>
+
+                        <h3>
+                            Orthopedics
+                        </h3>
+
+                        <p>
+
+                            Restoring movement with modern
+                            joint, sports and rehabilitation care.
+
+                        </p>
+
+                        <a href="#"
+                           class="learn">
+
+                            Explore department →
+
+                        </a>
+
+                    </article>
+
+
+                    <article class="service-card">
+
+                        <div class="service-icon orange">
+                            ⌁
+                        </div>
+
+                        <span>04</span>
+
+                        <h3>
+                            Gastroenterology
+                        </h3>
+
+                        <p>
+
+                            Advanced digestive health services,
+                            endoscopy and liver care.
+
+                        </p>
+
+                        <a href="#"
+                           class="learn">
+
+                            Explore department →
+
+                        </a>
+
+                    </article>
+
+
+                </div>
+
+
+                <div class="center">
+
+                    <a href="#"
+                       class="text-link"
+                       id="allServices">
+
+                        View all specialties
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             DOCTORS SECTION
+        ======================================= -->
+
+        <section class="section light-section"
+                 id="doctors">
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            OUR SPECIALISTS
+                        </span>
+
+                        <h2>
+
+                            Meet the people
+                            <br>
+
+                            behind
+                            <em>the care.</em>
+
+                        </h2>
+
+                    </div>
+
+
+                    <div class="doctor-controls">
+
+                        <button
+                            class="circle-btn"
+                            id="prevDoctor">
+
+                            ←
+
+                        </button>
+
+                        <button
+                            class="circle-btn"
+                            id="nextDoctor">
+
+                            →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="doctor-grid"
+                     id="doctorGrid">
+
+
+                    <article class="doctor-card">
+
+                        <div class="doctor-photo photo-1">
+                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=700&q=85" alt="Dr. Maya Deshmukh">
+                        </div>
+
+                        <div class="doctor-info">
+
+                            <span>
+                                Cardiology
+                            </span>
+
+                            <h3>
+                                Dr. Maya Deshmukh
+                            </h3>
+
+                            <p>
+                                Senior Interventional Cardiologist
+                            </p>
+
+                            <div>
+
+                                <strong>
+                                    ★ 4.9
+                                </strong>
+
+                                <small>
+                                    18 years experience
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="doctor-card">
+
+                        <div class="doctor-photo photo-2">
+                            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=700&q=85" alt="Dr. Arjun Mehta">
+                        </div>
+
+                        <div class="doctor-info">
+
+                            <span>
+                                Neurology
+                            </span>
+
+                            <h3>
+                                Dr. Arjun Mehta
+                            </h3>
+
+                            <p>
+                                Consultant Neurologist
+                            </p>
+
+                            <div>
+
+                                <strong>
+                                    ★ 4.8
+                                </strong>
+
+                                <small>
+                                    14 years experience
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="doctor-card">
+
+                        <div class="doctor-photo photo-3">
+                            <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=700&q=85" alt="Dr. Riya Kapoor">
+                        </div>
+
+                        <div class="doctor-info">
+
+                            <span>
+                                Orthopedics
+                            </span>
+
+                            <h3>
+                                Dr. Riya Kapoor
+                            </h3>
+
+                            <p>
+                                Joint Replacement Specialist
+                            </p>
+
+                            <div>
+
+                                <strong>
+                                    ★ 4.9
+                                </strong>
+
+                                <small>
+                                    12 years experience
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                     <article class="doctor-card">
+
+                        <div class="doctor-photo photo-3">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9_YrxxTKBqVRSzEnTL3BvJEsVKP8LPYZRYw9TI-cjPg&s=10" alt="Dr. Santosh Choudhary">
+                        </div>
+
+                        <div class="doctor-info">
+
+                            <span>
+                                OPHTHALMOLOGY
+                            </span>
+
+                            <h3>
+                                Dr. Santosh Choudhary
+                            </h3>
+
+                            <p>
+                                Its a eye care specialist.
+                            </p>
+
+                            <div>
+
+                                <strong>
+                                    ★ 4.9
+                                </strong>
+
+                                <small>
+                                    18 years experience
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <article class="doctor-card">
+
+                        <div class="doctor-photo photo-3">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM8_KQvd54d1Dhgw8sW7t3JWDkLJfzUXTpKekAG64d-w&s=10" alt="Dr. Shweta Bansal">
+                        </div>
+
+                        <div class="doctor-info">
+
+                            <span>
+                                PULMONOLOGY
+                            </span>
+
+                            <h3>
+                                Dr. Shweta Bansal
+                            </h3>
+
+                            <p>
+                                Its a lung care specialist.
+                            </p>
+
+                            <div>
+
+                                <strong>
+                                    ★ 4.8
+                                </strong>
+
+                                <small>
+                                    12 years experience
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <article class="doctor-card">
+
+                        <div class="doctor-photo photo-3">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy2YTgqJuggiTr33eENW0EMosiDKT8HIxyQDZJcNqyFw&s=10" alt="Dr. Anitha Selvam">
+                        </div>
+
+                        <div class="doctor-info">
+
+                            <span>
+                                PEDIATRICS
+                            </span>
+
+                            <h3>
+                                Dr. Anitha Selvam
+                            </h3>
+
+                            <p>
+                                Its a child care specialist.
+                            </p>
+
+                            <div>
+
+                                <strong>
+                                    ★ 4.8
+                                </strong>
+
+                                <small>
+                                    12 years experience
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             PATIENT DASHBOARD
+        ======================================= -->
+
+        <section class="section dashboard-section"
+                 id="facilities">
+
+            <div class="container dashboard-grid">
+
+
+                <div class="dashboard-copy">
+
+                    <span class="eyebrow">
+                        SMART HEALTHCARE
+                    </span>
+
+                    <h2>
+
+                        Your health,
+                        <br>
+
+                        <em>connected.</em>
+
+                    </h2>
+
+
+                    <p>
+
+                        Manage appointments, prescriptions,
+                        lab reports and follow-ups from our
+                        secure patient portal.
+
+                    </p>
+
+
+                    <ul class="check-list">
+
+                        <li>
+                            <span>✓</span>
+                            Instant appointment management
+                        </li>
+
+                        <li>
+                            <span>✓</span>
+                            Digital prescriptions & medical records
+                        </li>
+
+                        <li>
+                            <span>✓</span>
+                            Online lab reports and health trends
+                        </li>
+
+                        <li>
+                            <span>✓</span>
+                            Secure video consultations
+                        </li>
+
+                    </ul>
+
+
+                    <button
+                        class="btn btn-dark patient-open">
+
+                        Open Patient Portal →
+
+                    </button>
+
+                </div>
+
+
+                <!-- DASHBOARD -->
+
+                <div class="dashboard">
+
+                    <div class="dash-head">
+
+                        <div>
+
+                            <small>
+                                GOOD MORNING
+                            </small>
+
+                            <h3>
+                                Hi, Aarav 👋
+                            </h3>
+
+                        </div>
+
+                        <div class="dash-avatar">
+                            A
+                        </div>
+
+                    </div>
+
+
+                    <div class="dash-tabs">
+
+                        <button class="active">
+                            Overview
+                        </button>
+
+                        <button>
+                            Appointments
+                        </button>
+
+                        <button>
+                            Reports
+                        </button>
+
+                    </div>
+
+
+                    <div class="dash-stats">
+
+
+                        <div>
+
+                            <span>♥</span>
+
+                            <small>
+                                Heart rate
+                            </small>
+
+                            <strong>
+                                72
+                                <i>BPM</i>
+                            </strong>
+
+                            <b>
+                                Normal
+                            </b>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>◉</span>
+
+                            <small>
+                                Blood pressure
+                            </small>
+
+                            <strong>
+                                118/76
+                            </strong>
+
+                            <b>
+                                Healthy
+                            </b>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>♨</span>
+
+                            <small>
+                                Temperature
+                            </small>
+
+                            <strong>
+                                98.4
+                                <i>°F</i>
+                            </strong>
+
+                            <b>
+                                Normal
+                            </b>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="next-visit">
+
+                        <div>
+
+                            <small>
+                                NEXT APPOINTMENT
+                            </small>
+
+                            <strong>
+                                Dr. Maya Deshmukh
+                            </strong>
+
+                            <span>
+                                Cardiology • Aug 18, 2026 • 10:30 AM
+                            </span>
+
+                        </div>
+
+                        <button>
+                            View →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             ABOUT SECTION
+        ======================================= -->
+
+        <section class="section about-section"
+                 id="about">
+
+            <div class="container about-grid">
+
+
+                <div class="about-art">
+
+                    <div class="art-card art-main">
+
+                        <span>
+                            ✚
+                        </span>
+
+                        <strong>
+                            20+
+                        </strong>
+
+                        <small>
+                            Years of trusted care
+                        </small>
+
+                    </div>
+
+
+                    <div class="art-card art-side">
+
+                        <strong>
+                            98%
+                        </strong>
+
+                        <small>
+                            Clinical outcomes
+                        </small>
+
+                    </div>
+
+
+                    <div class="art-cross">
+                        +
+                    </div>
+
+                </div>
+
+
+                <div class="about-copy">
+
+                    <span class="eyebrow">
+                        WHY CARENOVA
+                    </span>
+
+                    <h2>
+
+                        Modern medicine.
+                        <br>
+
+                        <em>Human connection.</em>
+
+                    </h2>
+
+
+                    <p>
+
+                        We believe great healthcare is a partnership.
+                        Our specialists combine clinical excellence,
+                        advanced technology and genuine empathy to
+                        make every patient feel heard, informed and cared for.
+
+                    </p>
+
+
+                    <div class="about-features">
+
+
+                        <div>
+
+                            <span>
+                                ◉
+                            </span>
+
+                            <strong>
+                                Accredited care
+                            </strong>
+
+                            <small>
+                                International quality standards
+                            </small>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                ✦
+                            </span>
+
+                            <strong>
+                                Advanced technology
+                            </strong>
+
+                            <small>
+                                Modern diagnostic & surgical systems
+                            </small>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                ♧
+                            </span>
+
+                            <strong>
+                                Patient first
+                            </strong>
+
+                            <small>
+                                Care designed around you
+                            </small>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                ⌁
+                            </span>
+
+                            <strong>
+                                Integrated teams
+                            </strong>
+
+                            <small>
+                                Experts working together
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             TESTIMONIAL
+        ======================================= -->
+
+        <section class="testimonial-section">
+
+            <div class="container">
+
+                <div class="quote-mark">
+                    “
+                </div>
+
+
+                <div class="testimonial"
+                     id="testimonial">
+
+                    <p>
+
+                        “From the first consultation to my recovery,
+                        everyone at CareNova made me feel safe and
+                        genuinely cared for. The doctors explained
+                        everything clearly.”
+
+                    </p>
+
+
+                    <div>
+
+                        <strong>
+                            Priya Sharma
+                        </strong>
+
+                        <span>
+                            Cardiology patient • Verified
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dots">
+
+                    <button class="active"></button>
+
+                    <button></button>
+
+                    <button></button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             HOSPITAL GALLERY
+        ======================================= -->
+
+        <section class="section gallery-section" id="gallery">
+            <div class="container">
+                <div class="section-heading gallery-heading">
+                    <div>
+                        <span class="eyebrow">OUR HOSPITAL</span>
+                        <h2>Explore our <em>campus.</em></h2>
+                    </div>
+                    <p>Take a visual tour of our modern hospital campus, reception, patient rooms, treatment areas and comfortable care spaces.</p>
+                </div>
+
+                <div class="hospital-gallery">
+                    <figure class="gallery-card gallery-large">
+                        <img src="maingate.jpg" alt="Modern hospital building and campus" loading="lazy">
+                        <figcaption><strong>Hospital Campus</strong><span>Modern healthcare environment</span></figcaption>
+                    </figure>
+                    <figure class="gallery-card">
+                        <img src="reception.jpg" alt="Hospital reception" loading="lazy">
+                        <figcaption><strong>Main Reception</strong><span>Welcome & patient support</span></figcaption>
+                    </figure>
+                    <figure class="gallery-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuhHqImE-y4u1eK9zDvmCa6BnEs5CcpK-WlaKddP5OOA&s=10" alt="Private patient room" loading="lazy">
+                        <figcaption><strong>Private Rooms</strong><span>Comfortable patient care</span></figcaption>
+                    </figure>
+                    <figure class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=900&q=85" alt="Modern hospital corridor" loading="lazy">
+                        <figcaption><strong>Care Wing</strong><span>Clean and modern facilities</span></figcaption>
+                    </figure>
+                    <figure class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=85" alt="Hospital patient room" loading="lazy">
+                        <figcaption><strong>Deluxe Room</strong><span>Quiet recovery spaces</span></figcaption>
+                    </figure>
+                    <figure class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=85" alt="Doctor in hospital" loading="lazy">
+                        <figcaption><strong>Clinical Care</strong><span>Experienced medical teams</span></figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+     PREMIUM HOSPITAL UPGRADE
+     PART 1 - NEW HTML SECTIONS
+====================================================== -->
+
+
+<!-- =====================================================
+     ABOUT CARENOVA
+====================================================== -->
+
+<section class="section premium-about" id="about">
+
+    <div class="container premium-about-grid">
+
+        <!-- IMAGE -->
+
+        <div class="premium-about-image">
+
+            <img
+                src="maingate.jpg"
+                alt="CareNova Hospital"
+            >
+
+            <div class="about-experience-card">
+
+                <strong>
+                    15+
+                </strong>
+
+                <span>
+                    Years of Healthcare
+                    Excellence
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONTENT -->
+
+        <div class="premium-about-content">
+
+            <span class="eyebrow">
+                ABOUT CARENOVA
+            </span>
+
+            <h2>
+                Advanced care,
+                <br>
+                <em>human touch.</em>
+            </h2>
+
+            <p>
+                CareNova Hospital is a modern healthcare
+                destination dedicated to providing safe,
+                compassionate and technology-driven medical
+                care for patients and their families.
+            </p>
+
+            <p>
+                From preventive healthcare and diagnostics
+                to advanced treatment and recovery,
+                our multidisciplinary teams work together
+                to deliver personalized care at every stage.
+            </p>
+
+
+            <div class="about-features">
+
+                <div>
+
+                    <span class="about-feature-icon">
+                        ✓
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Expert Doctors
+                        </strong>
+
+                        <small>
+                            Experienced specialists
+                            across major departments.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <span class="about-feature-icon">
+                        ✓
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Modern Technology
+                        </strong>
+
+                        <small>
+                            Advanced diagnostic and
+                            treatment facilities.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <span class="about-feature-icon">
+                        ✓
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Patient First
+                        </strong>
+
+                        <small>
+                            Compassionate care designed
+                            around every patient.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <span class="about-feature-icon">
+                        ✓
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            24/7 Emergency
+                        </strong>
+
+                        <small>
+                            Emergency medical support
+                            whenever you need us.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="btn btn-primary"
+                onclick="
+                    document
+                    .querySelector('#departments')
+                    ?.scrollIntoView({
+                        behavior:'smooth'
+                    })
+                "
+            >
+
+                Explore Our Services →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     HOSPITAL STATISTICS
+====================================================== -->
+
+<section class="premium-stats">
+
+    <div class="container premium-stats-grid">
+
+
+        <div class="premium-stat">
+
+            <strong
+                data-target="15"
+            >
+                0
+            </strong>
+
+            <span>
+                Years of Excellence
+            </span>
+
+        </div>
+
+
+        <div class="premium-stat">
+
+            <strong
+                data-target="50"
+            >
+                0
+            </strong>
+
+            <span>
+                Specialist Doctors
+            </span>
+
+        </div>
+
+
+        <div class="premium-stat">
+
+            <strong
+                data-target="25000"
+            >
+                0
+            </strong>
+
+            <span>
+                Patients Served
+            </span>
+
+        </div>
+
+
+        <div class="premium-stat">
+
+            <strong
+                data-target="100"
+            >
+                0
+            </strong>
+
+            <span>
+                Hospital Beds
+            </span>
+
+        </div>
+
+
+        <div class="premium-stat">
+
+            <strong
+                data-target="98"
+            >
+                0
+            </strong>
+
+            <span>
+                Patient Satisfaction
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MEDICAL DEPARTMENTS
+====================================================== -->
+
+<section
+    class="section departments-section"
+    id="departments"
+>
+
+    <div class="container">
+
+
+        <!-- SECTION HEADER -->
+
+        <div class="section-heading centered">
+
+            <span class="eyebrow">
+                OUR DEPARTMENTS
+            </span>
+
+            <h2>
+                Specialized care for
+                <br>
+                <em>every need.</em>
+            </h2>
+
+            <p>
+                Explore our specialist departments and
+                find the right medical care for you and
+                your family.
+            </p>
+
+        </div>
+
+
+
+        <!-- DEPARTMENT GRID -->
+
+        <div class="department-grid">
+
+
+            <!-- CARDIOLOGY -->
+
+            <article
+                class="department-card"
+                data-department="Cardiology"
+            >
+
+                <div class="department-icon">
+                    ❤️
+                </div>
+
+                <span>
+                    CARDIOLOGY
+                </span>
+
+                <h3>
+                    Heart & Vascular Care
+                </h3>
+
+                <p>
+                    Comprehensive diagnosis and treatment
+                    for heart and cardiovascular conditions.
+                </p>
+
+                <button
+                    onclick="
+                        openDepartmentModal(
+                            'Cardiology'
+                        )
+                    "
+                >
+                    Explore Department →
+                </button>
+
+            </article>
+
+
+            <!-- NEUROLOGY -->
+
+            <article
+                class="department-card"
+                data-department="Neurology"
+            >
+
+                <div class="department-icon">
+                    🧠
+                </div>
+
+                <span>
+                    NEUROLOGY
+                </span>
+
+                <h3>
+                    Brain & Nerve Care
+                </h3>
+
+                <p>
+                    Advanced neurological evaluation,
+                    diagnosis and treatment.
+                </p>
+
+                <button
+                    onclick="
+                        openDepartmentModal(
+                            'Neurology'
+                        )
+                    "
+                >
+                    Explore Department →
+                </button>
+
+            </article>
+
+
+            <!-- ORTHOPEDICS -->
+
+            <article
+                class="department-card"
+                data-department="Orthopedics"
+            >
+
+                <div class="department-icon">
+                    🦴
+                </div>
+
+                <span>
+                    ORTHOPEDICS
+                </span>
+
+                <h3>
+                    Bone & Joint Care
+                </h3>
+
+                <p>
+                    Modern treatment for bones, joints,
+                    muscles and movement-related conditions.
+                </p>
+
+                <button
+                    onclick="
+                        openDepartmentModal(
+                            'Orthopedics'
+                        )
+                    "
+                >
+                    Explore Department →
+                </button>
+
+            </article>
+
+
+            <!-- PEDIATRICS -->
+
+            <article
+                class="department-card"
+                data-department="Pediatrics"
+            >
+
+                <div class="department-icon">
+                    👶
+                </div>
+
+                <span>
+                    PEDIATRICS
+                </span>
+
+                <h3>
+                    Children's Care
+                </h3>
+
+                <p>
+                    Specialized healthcare for newborns,
+                    children and young patients.
+                </p>
+
+                <button
+                    onclick="
+                        openDepartmentModal(
+                            'Pediatrics'
+                        )
+                    "
+                >
+                    Explore Department →
+                </button>
+
+            </article>
+
+            <!-- PULMONOLOGY -->
+
+            <article
+                class="department-card"
+                data-department="Pulmonology"
+            >
+
+                <div class="department-icon">
+                    🫁
+                </div>
+
+                <span>
+                    PULMONOLOGY
+                </span>
+
+                <h3>
+                    Lung & Respiratory Care
+                </h3>
+
+                <p>
+                    Diagnosis and treatment for respiratory
+                    and pulmonary conditions.
+                </p>
+
+                <button
+                    onclick="
+                        openDepartmentModal(
+                            'Pulmonology'
+                        )
+                    "
+                >
+                    Explore Department →
+                </button>
+
+            </article>
+
+
+            <!-- GENERAL MEDICINE -->
+
+            <article
+                class="department-card"
+                data-department="General Medicine"
+            >
+
+                <div class="department-icon">
+                    🩺
+                </div>
+
+                <span>
+                    GENERAL MEDICINE
+                </span>
+
+                <h3>
+                    Primary Healthcare
+                </h3>
+
+                <p>
+                    Comprehensive diagnosis, preventive
+                    care and general medical treatment.
+                </p>
+
+                <button
+                    onclick="
+                        openDepartmentModal(
+                            'General Medicine'
+                        )
+                    "
+                >
+                    Explore Department →
+                </button>
+
+            </article>
+
+
+            <!-- OPHTHALMOLOGY -->
+
+            <article
+                class="department-card"
+                data-department="Ophthalmology"
+            >
+
+                <div class="department-icon">
+                    👁️
+                </div>
+
+                <span>
+                    OPHTHALMOLOGY
+                </span>
+
+                <h3>
+                    Eye Care
+                </h3>
+
+                <p>
+                    Complete eye examinations and advanced
+                    vision care services.
+                </p>
+
+                <button
+                    onclick="
+                        openDepartmentModal(
+                            'Ophthalmology'
+                        )
+                    "
+                >
+                    Explore Department →
+                </button>
+
+            </article>
+
+
+            <!-- DENTAL -->
+
+            <article
+                class="department-card"
+                data-department="Dental"
+            >
+
+                <div class="department-icon">
+                    🦷
+                </div>
+
+                <span>
+                    DENTAL
+                </span>
+
+                <h3>
+                    Dental Care
+                </h3>
+
+                <p>
+                    Preventive, restorative and specialist
+                    dental healthcare services.
+                </p>
+
+                <button
+                    onclick="
+                        openDepartmentModal(
+                            'Dental'
+                        )
+                    "
+                >
+                    Explore Department →
+                </button>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HOSPITAL ROOMS
+====================================================== -->
+
+<section
+    class="section rooms-section"
+    id="rooms"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="eyebrow">
+                    PATIENT ACCOMMODATION
+                </span>
+
+                <h2>
+                    Comfortable spaces
+                    <br>
+                    for <em>recovery.</em>
+                </h2>
+
+            </div>
+
+            <p>
+                Designed to provide patients and families
+                with comfort, privacy and a calm environment
+                throughout their stay.
+            </p>
+
+        </div>
+
+
+        <div class="rooms-grid">
+
+
+            <!-- GENERAL WARD -->
+
+            <article class="room-card">
+
+                <div class="room-image">
+
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOBwym1QdEhXWNXn99UjtvSh5SaQATBVu87GhF5juIoA&s=10"
+                        alt="General Ward"
+                    >
+
+                    <span class="room-badge">
+                        GENERAL
+                    </span>
+
+                </div>
+
+
+                <div class="room-content">
+
+                    <h3>
+                        General Ward
+                    </h3>
+
+                    <p>
+                        Comfortable shared accommodation
+                        with essential patient facilities.
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            ✓ Nursing support
+                        </li>
+
+                        <li>
+                            ✓ 24/7 monitoring
+                        </li>
+
+                        <li>
+                            ✓ Patient meals
+                        </li>
+
+                    </ul>
+
+
+                    <button
+                        onclick="
+                            openRoomModal(
+                                'General Ward'
+                            )
+                        "
+                    >
+                        View Room →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRIVATE ROOM -->
+
+            <article class="room-card featured-room">
+
+                <div class="room-image">
+
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuhHqImE-y4u1eK9zDvmCa6BnEs5CcpK-WlaKddP5OOA&s=10"
+                        alt="Private Room"
+                    >
+
+                    <span class="room-badge">
+                        POPULAR
+                    </span>
+
+                </div>
+
+
+                <div class="room-content">
+
+                    <h3>
+                        Private Room
+                    </h3>
+
+                    <p>
+                        A private and peaceful room designed
+                        for comfortable recovery.
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            ✓ Private bathroom
+                        </li>
+
+                        <li>
+                            ✓ Attendant seating
+                        </li>
+
+                        <li>
+                            ✓ Television & Wi-Fi
+                        </li>
+
+                    </ul>
+
+
+                    <button
+                        onclick="
+                            openRoomModal(
+                                'Private Room'
+                            )
+                        "
+                    >
+                        View Room →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- DELUXE ROOM -->
+
+            <article class="room-card">
+
+                <div class="room-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=85"
+                        alt="Deluxe Hospital Room"
+                    >
+
+                    <span class="room-badge">
+                        DELUXE
+                    </span>
+
+                </div>
+
+
+                <div class="room-content">
+
+                    <h3>
+                        Deluxe Room
+                    </h3>
+
+                    <p>
+                        Premium accommodation with additional
+                        comfort and privacy.
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            ✓ Premium furniture
+                        </li>
+
+                        <li>
+                            ✓ Attendant bed
+                        </li>
+
+                        <li>
+                            ✓ Personal refrigerator
+                        </li>
+
+                    </ul>
+
+
+                    <button
+                        onclick="
+                            openRoomModal(
+                                'Deluxe Room'
+                            )
+                        "
+                    >
+                        View Room →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- ICU -->
+
+            <article class="room-card">
+
+                <div class="room-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1000&q=85"
+                        alt="Intensive Care Unit"
+                    >
+
+                    <span class="room-badge">
+                        CRITICAL CARE
+                    </span>
+
+                </div>
+
+
+                <div class="room-content">
+
+                    <h3>
+                        Intensive Care Unit
+                    </h3>
+
+                    <p>
+                        Advanced critical-care environment
+                        with continuous medical monitoring.
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            ✓ Continuous monitoring
+                        </li>
+
+                        <li>
+                            ✓ Specialist doctors
+                        </li>
+
+                        <li>
+                            ✓ Advanced equipment
+                        </li>
+
+                    </ul>
+
+
+                    <button
+                        onclick="
+                            openRoomModal(
+                                'Intensive Care Unit'
+                            )
+                        "
+                    >
+                        View Facility →
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     EMERGENCY CARE
+====================================================== -->
+
+<section
+    class="premium-emergency"
+    id="emergency"
+>
+
+    <div class="container emergency-grid">
+
+
+        <div class="emergency-content">
+
+            <span class="emergency-label">
+                24 / 7 EMERGENCY SERVICES
+            </span>
+
+            <h2>
+                When every
+                <br>
+                <em>second matters.</em>
+            </h2>
+
+            <p>
+                Our emergency department is equipped
+                to provide rapid medical attention for
+                urgent and life-threatening conditions.
+            </p>
+
+
+            <div class="emergency-features">
+
+                <div>
+
+                    <span>
+                        🚑
+                    </span>
+
+                    <strong>
+                        Ambulance
+                    </strong>
+
+                    <small>
+                        Rapid emergency transport
+                    </small>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        🩺
+                    </span>
+
+                    <strong>
+                        Emergency Doctors
+                    </strong>
+
+                    <small>
+                        Specialist support 24/7
+                    </small>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        ❤️
+                    </span>
+
+                    <strong>
+                        Critical Care
+                    </strong>
+
+                    <small>
+                        Advanced ICU support
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="emergency-buttons">
+
+                <button
+                    class="btn btn-emergency"
+                    onclick="
+                        showEmergencyModal()
+                    "
+                >
+
+                    ☎ Emergency Help
+
+                </button>
+
+
+                <button
+                    class="btn btn-light"
+                    onclick="
+                        openAmbulanceModal()
+                    "
+                >
+
+                    🚑 Request Ambulance
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="emergency-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1200&q=85"
+                alt="Emergency Department"
+            >
+
+
+            <div class="emergency-floating-card">
+
+                <span>
+                    EMERGENCY
+                </span>
+
+                <strong>
+                    24/7
+                </strong>
+
+                <small>
+                    Always here for you
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DIAGNOSTICS & LABORATORY
+====================================================== -->
+
+<section
+    class="section diagnostics-section"
+    id="diagnostics"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading centered">
+
+            <span class="eyebrow">
+                DIAGNOSTICS & LABORATORY
+            </span>
+
+            <h2>
+                Accurate answers.
+                <br>
+                <em>Better decisions.</em>
+            </h2>
+
+            <p>
+                Advanced diagnostic services to help our
+                doctors make accurate and timely decisions.
+            </p>
+
+        </div>
+
+
+        <div class="diagnostics-grid">
+
+
+            <article class="diagnostic-card">
+
+                <div class="diagnostic-icon">
+                    🩸
+                </div>
+
+                <h3>
+                    Blood Tests
+                </h3>
+
+                <p>
+                    Comprehensive laboratory testing
+                    for routine and specialized needs.
+                </p>
+
+                <button
+                    onclick="
+                        openDiagnosticModal(
+                            'Blood Tests'
+                        )
+                    "
+                >
+                    Book Test →
+                </button>
+
+            </article>
+
+
+            <article class="diagnostic-card">
+
+                <div class="diagnostic-icon">
+                    ❤️
+                </div>
+
+                <h3>
+                    ECG
+                </h3>
+
+                <p>
+                    Heart rhythm and cardiovascular
+                    diagnostic evaluation.
+                </p>
+
+                <button
+                    onclick="
+                        openDiagnosticModal(
+                            'ECG'
+                        )
+                    "
+                >
+                    Book Test →
+                </button>
+
+            </article>
+
+
+            <article class="diagnostic-card">
+
+                <div class="diagnostic-icon">
+                    🩻
+                </div>
+
+                <h3>
+                    X-Ray
+                </h3>
+
+                <p>
+                    Digital imaging for accurate
+                    diagnosis and evaluation.
+                </p>
+
+                <button
+                    onclick="
+                        openDiagnosticModal(
+                            'X-Ray'
+                        )
+                    "
+                >
+                    Book Test →
+                </button>
+
+            </article>
+
+
+            <article class="diagnostic-card">
+
+                <div class="diagnostic-icon">
+                    🔬
+                </div>
+
+                <h3>
+                    MRI Scan
+                </h3>
+
+                <p>
+                    Advanced imaging for detailed
+                    internal examination.
+                </p>
+
+                <button
+                    onclick="
+                        openDiagnosticModal(
+                            'MRI Scan'
+                        )
+                    "
+                >
+                    Book Test →
+                </button>
+
+            </article>
+
+
+            <article class="diagnostic-card">
+
+                <div class="diagnostic-icon">
+                    🖥️
+                </div>
+
+                <h3>
+                    CT Scan
+                </h3>
+
+                <p>
+                    High-resolution imaging for
+                    comprehensive diagnosis.
+                </p>
+
+                <button
+                    onclick="
+                        openDiagnosticModal(
+                            'CT Scan'
+                        )
+                    "
+                >
+                    Book Test →
+                </button>
+
+            </article>
+
+
+            <article class="diagnostic-card">
+
+                <div class="diagnostic-icon">
+                    👶
+                </div>
+
+                <h3>
+                    Ultrasound
+                </h3>
+
+                <p>
+                    Safe diagnostic imaging for
+                    multiple medical applications.
+                </p>
+
+                <button
+                    onclick="
+                        openDiagnosticModal(
+                            'Ultrasound'
+                        )
+                    "
+                >
+                    Book Test →
+                </button>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HEALTH & WELLNESS
+====================================================== -->
+
+<section
+    class="section health-blog-section"
+    id="health-blog"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="eyebrow">
+                    HEALTH & WELLNESS
+                </span>
+
+                <h2>
+                    Knowledge for a
+                    <br>
+                    <em>healthier life.</em>
+                </h2>
+
+            </div>
+
+
+            <button
+                class="btn btn-outline"
+                onclick="
+                    showToast(
+                        'More health articles coming soon.'
+                    )
+                "
+            >
+                View All Articles →
+            </button>
+
+        </div>
+
+
+        <div class="health-blog-grid">
+
+
+            <article class="health-blog-card">
+
+                <div class="health-blog-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=900&q=85"
+                        alt="Heart Health"
+                    >
+
+                </div>
+
+
+                <div class="health-blog-content">
+
+                    <span>
+                        HEART HEALTH
+                    </span>
+
+                    <h3>
+                        Simple habits for a healthier heart
+                    </h3>
+
+                    <p>
+                        Discover everyday lifestyle choices
+                        that can support cardiovascular health.
+                    </p>
+
+                    <button
+                        onclick="
+                            showToast(
+                                'Health article opened.'
+                            )
+                        "
+                    >
+                        Read Article →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="health-blog-card">
+
+                <div class="health-blog-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=900&q=85"
+                        alt="Healthy Lifestyle"
+                    >
+
+                </div>
+
+
+                <div class="health-blog-content">
+
+                    <span>
+                        WELLNESS
+                    </span>
+
+                    <h3>
+                        Building a healthier daily routine
+                    </h3>
+
+                    <p>
+                        Small, consistent habits can make
+                        a meaningful difference to your health.
+                    </p>
+
+                    <button
+                        onclick="
+                            showToast(
+                                'Health article opened.'
+                            )
+                        "
+                    >
+                        Read Article →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="health-blog-card">
+
+                <div class="health-blog-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=900&q=85"
+                        alt="Healthy Food"
+                    >
+
+                </div>
+
+
+                <div class="health-blog-content">
+
+                    <span>
+                        NUTRITION
+                    </span>
+
+                    <h3>
+                        Nutrition basics for everyday health
+                    </h3>
+
+                    <p>
+                        Learn how balanced nutrition can
+                        support energy and overall wellbeing.
+                    </p>
+
+                    <button
+                        onclick="
+                            showToast(
+                                'Health article opened.'
+                            )
+                        "
+                    >
+                        Read Article →
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =====================================================
+     TRUST & QUALITY
+====================================================== -->
+
+<section class="premium-trust">
+
+    <div class="container trust-grid">
+
+
+        <div>
+
+            <span class="eyebrow">
+                WHY CHOOSE CARENOVA
+            </span>
+
+            <h2>
+                Healthcare you can
+                <br>
+                <em>trust.</em>
+            </h2>
+
+            <p>
+                We combine experienced medical professionals,
+                advanced technology and compassionate service
+                to create a healthcare experience centered
+                around every patient.
+            </p>
+
+        </div>
+
+
+        <div class="trust-items">
+
+            <div class="trust-item">
+
+                <span>
+                    🛡️
+                </span>
+
+                <div>
+
+                    <strong>
+                        Patient Safety
+                    </strong>
+
+                    <small>
+                        Safety-focused healthcare
+                        at every step.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="trust-item">
+
+                <span>
+                    🏆
+                </span>
+
+                <div>
+
+                    <strong>
+                        Quality Care
+                    </strong>
+
+                    <small>
+                        High standards of clinical
+                        and patient care.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="trust-item">
+
+                <span>
+                    🔬
+                </span>
+
+                <div>
+
+                    <strong>
+                        Modern Technology
+                    </strong>
+
+                    <small>
+                        Advanced diagnostic and
+                        treatment capabilities.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="trust-item">
+
+                <span>
+                    ❤️
+                </span>
+
+                <div>
+
+                    <strong>
+                        Compassionate Team
+                    </strong>
+
+                    <small>
+                        People who genuinely care
+                        about your wellbeing.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     END OF PREMIUM PART 1
+====================================================== -->
+
+
+        <!-- ======================================
+             CONTACT SECTION
+        ======================================= -->
+
+        <section class="section contact-section"
+                 id="contact">
+
+            <div class="container contact-grid">
+
+
+                <div>
+
+                    <span class="eyebrow">
+                        GET IN TOUCH
+                    </span>
+
+                    <h2>
+
+                        We're here when
+                        <br>
+
+                        <em>you need us.</em>
+                    </h2>
+
+
+                    <p>
+
+                        Have a question or need help finding
+                        the right care? Our team is ready to help.
+
+                    </p>
+
+
+                    <div class="contact-list">
+
+
+                        <div>
+
+                            <span>
+                                ⌖
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Visit us
+                                </strong>
+
+                                <small>
+                                    24 Healthcare Avenue,
+                                    New Delhi, India
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                ☎
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Call us
+                                </strong>
+
+                                <small>
+                                    +91 1800 123 4567 • 24/7
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                ✉
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Email
+                                </strong>
+
+                                <small>
+                                    care@carenova.health
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONTACT FORM -->
+
+                <form class="contact-form"
+                      id="contactForm">
+
+                    <h3>
+                        Send us a message
+                    </h3>
+
+
+                    <label>
+
+                        Name
+
+                        <input
+                            id="contactName"
+                            required
+                            placeholder="Your full name">
+
+                    </label>
+
+
+                    <label>
+
+                        Email
+
+                        <input
+                            id="contactEmail"
+                            required
+                            type="email"
+                            placeholder="you@example.com">
+
+                    </label>
+
+
+                    <label>
+
+                        How can we help?
+
+                        <textarea
+                            id="contactMessage"
+                            required
+                            rows="4"
+                            placeholder="Write your message..."></textarea>
+
+                    </label>
+
+
+                    <button
+                        class="btn btn-primary"
+                        type="submit">
+
+                        Send message
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+                </form>
+
+                <div class="hospital-map-card">
+                    <div class="map-heading">
+                        <div>
+                            <span class="eyebrow">FIND US</span>
+                            <h3>Hospital Location</h3>
+                            <p>24 Healthcare Avenue, New Delhi, India</p>
+                        </div>
+                        <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=24+Healthcare+Avenue+New+Delhi+India" target="_blank" rel="noopener">Open Maps ↗</a>
+                    </div>
+                    <iframe
+                        title="CareNova Hospital location map"
+                        src="https://www.google.com/maps?q=24%20Healthcare%20Avenue%2C%20New%20Delhi%2C%20India&output=embed"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==========================================
+         FOOTER
+    =========================================== -->
+
+    <footer>
+
+        <div class="container footer-grid">
+
+
+            <div>
+
+                <a href="#home"
+                   class="logo footer-logo">
+
+                    <span class="logo-mark">
+                        +
+                    </span>
+
+                    <span>
+
+                        Care<span>Nova</span>
+
+                        <small>
+                            HOSPITAL
+                        </small>
+
+                    </span>
+
+                </a>
+
+
+                <p>
+                    Advanced healthcare with a human touch.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Care
+                </h4>
+
+                <a href="#services">
+                    Specialties
+                </a>
+
+                <a href="#doctors">
+                    Find a doctor
+                </a>
+
+                <a href="#facilities">
+                    Facilities
+                </a>
+
+                <a href="#gallery">
+                    Gallery
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Patients
+                </h4>
+
+                <a href="#"
+                   class="appointment-open">
+
+                    Appointments
+
+                </a>
+
+                <a href="#"
+                   class="patient-open">
+
+                    Patient portal
+
+                </a>
+
+                <a href="#">
+                    Insurance
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Company
+                </h4>
+
+                <a href="#about">
+                    About us
+                </a>
+
+                <a href="#contact">
+                    Contact
+                </a>
+
+                <a href="#">
+                    Careers
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="container footer-bottom">
+
+            <span>
+                © 2026 CareNova Hospital.
+                All rights reserved.
+            </span>
+
+            <span>
+                Privacy • Terms • Accessibility
+            </span>
+
+        </div>
+
+    </footer>
+
+    <!-- =====================================================
+     PATIENT PORTAL MODAL
+===================================================== -->
+
+<div id="patientPortalModal" class="patient-portal-modal">
+
+    <div class="patient-portal-box">
+
+        <button
+            id="closePatientPortal"
+            class="patient-portal-close"
+        >
+            &times;
+        </button>
+
+        <div id="patientPortalContent"></div>
+
+    </div>
+
+</div>
+
+<button
+    type="button"
+    id="patientPortalBtn"
+    class="portal-btn"
+>
+    Patient Portal
+</button>
+
+<!-- =========================================================
+     CARENOVA AI HEALTH ASSISTANT
+========================================================= -->
+
+<div class="carenova-ai">
+
+    <!-- Floating AI Button -->
+    <button
+        class="ai-floating-button"
+        id="aiFloatingButton"
+        onclick="toggleCareNovaAI()"
+        aria-label="Open CareNova AI"
+    >
+        <span class="ai-robot">🤖</span>
+
+        <span class="ai-button-text">
+            CareNova AI
+        </span>
+    </button>
+
+
+    <!-- AI Chat Window -->
+    <div
+        class="ai-chat-window"
+        id="aiChatWindow"
+    >
+
+        <!-- Header -->
+        <div class="ai-chat-header">
+
+            <div class="ai-header-profile">
+
+                <div class="ai-avatar">
+                    🤖
+                </div>
+
+                <div>
+
+                    <strong>
+                        CareNova AI
+                    </strong>
+
+                    <span>
+                        ● Online · Demo Assistant
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="ai-close-button"
+                onclick="toggleCareNovaAI()"
+                aria-label="Close AI"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- Messages -->
+        <div
+            class="ai-chat-messages"
+            id="aiChatMessages"
+        >
+
+            <div class="ai-message assistant">
+
+                <div class="message-avatar">
+                    🤖
+                </div>
+
+                <div class="message-bubble">
+
+                    Hello! 👋 I'm <strong>CareNova AI</strong>.
+
+                    <br><br>
+
+                    I can guide you through our demo hospital
+                    website.
+
+                    <br><br>
+
+                    You can ask me things like:
+
+                    <br><br>
+
+                    • Book a cardiology appointment<br>
+                    • Find a doctor<br>
+                    • View hospital departments<br>
+                    • Find diagnostic tests<br>
+                    • Open patient portal<br>
+                    • Hospital room information
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Quick Actions -->
+        <div
+            class="ai-quick-actions"
+            id="aiQuickActions"
+        >
+
+            <button
+                onclick="aiQuickMessage('I want to book a cardiology appointment.')"
+            >
+                ❤️ Cardiology
+            </button>
+
+            <button
+                onclick="aiQuickMessage('I want to find a doctor.')"
+            >
+                👨‍⚕️ Find Doctor
+            </button>
+
+            <button
+                onclick="aiQuickMessage('Show me diagnostic tests.')"
+            >
+                🧪 Diagnostics
+            </button>
+
+            <button
+                onclick="aiQuickMessage('Open patient portal.')"
+            >
+                👤 Patient Portal
+            </button>
+
+        </div>
+
+
+        <!-- Input -->
+        <div class="ai-input-area">
+
+            <input
+                type="text"
+                id="aiUserInput"
+                placeholder="Type your message..."
+                autocomplete="off"
+                onkeydown="
+                    if(event.key === 'Enter')
+                    sendAIMessage()
+                "
+            >
+
+            <button
+                onclick="sendAIMessage()"
+                aria-label="Send message"
+            >
+                ➤
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     NOTIFICATION CENTER
+========================================================= -->
+
+<div class="notification-system">
+
+    <!-- Notification Bell -->
+    <button
+        class="notification-bell"
+        id="notificationBell"
+        onclick="toggleNotificationCenter()"
+        aria-label="Notifications"
+    >
+
+        <span class="notification-bell-icon">
+            🔔
+        </span>
+
+        <span
+            class="notification-count"
+            id="notificationCount"
+        >
+            3
+        </span>
+
+    </button>
+
+
+    <!-- Notification Panel -->
+    <div
+        class="notification-panel"
+        id="notificationPanel"
+    >
+
+        <!-- Header -->
+        <div class="notification-header">
+
+            <div>
+
+                <span class="notification-label">
+                    CARENOVA PATIENT PORTAL
+                </span>
+
+                <h3>
+                    Notifications
+                </h3>
+
+            </div>
+
+
+            <button
+                class="mark-all-button"
+                onclick="markAllNotificationsRead()"
+            >
+                Mark all read
+            </button>
+
+        </div>
+
+
+        <!-- Notification List -->
+        <div
+            class="notification-list"
+            id="notificationList"
+        >
+
+            <!-- Appointment -->
+            <div
+                class="notification-item unread"
+                data-notification="appointment"
+                onclick="
+                    openNotificationDetails('appointment')
+                "
+            >
+
+                <div class="notification-icon appointment-icon">
+                    🔔
+                </div>
+
+                <div class="notification-content">
+
+                    <strong>
+                        Appointment reminder
+                    </strong>
+
+                    <p>
+                        Your appointment is tomorrow
+                        at 10:30 AM.
+                    </p>
+
+                    <small>
+                        15 minutes ago
+                    </small>
+
+                </div>
+
+
+                <span class="unread-dot"></span>
+
+            </div>
+
+
+            <!-- Lab -->
+            <div
+                class="notification-item unread"
+                data-notification="lab"
+                onclick="
+                    openNotificationDetails('lab')
+                "
+            >
+
+                <div class="notification-icon lab-icon">
+                    🧪
+                </div>
+
+                <div class="notification-content">
+
+                    <strong>
+                        Lab report available
+                    </strong>
+
+                    <p>
+                        Your blood test report is ready.
+                    </p>
+
+                    <small>
+                        1 hour ago
+                    </small>
+
+                </div>
+
+
+                <span class="unread-dot"></span>
+
+            </div>
+
+
+            <!-- Prescription -->
+            <div
+                class="notification-item unread"
+                data-notification="prescription"
+                onclick="
+                    openNotificationDetails('prescription')
+                "
+            >
+
+                <div class="notification-icon prescription-icon">
+                    💊
+                </div>
+
+                <div class="notification-content">
+
+                    <strong>
+                        Prescription updated
+                    </strong>
+
+                    <p>
+                        Dr. Arjun Mehta added a new
+                        prescription.
+                    </p>
+
+                    <small>
+                        3 hours ago
+                    </small>
+
+                </div>
+
+
+                <span class="unread-dot"></span>
+
+            </div>
+
+
+            <!-- Health Checkup -->
+            <div
+                class="notification-item"
+                data-notification="checkup"
+                onclick="
+                    openNotificationDetails('checkup')
+                "
+            >
+
+                <div class="notification-icon checkup-icon">
+                    ❤️
+                </div>
+
+                <div class="notification-content">
+
+                    <strong>
+                        Health check-up reminder
+                    </strong>
+
+                    <p>
+                        Your annual health check-up
+                        is due this month.
+                    </p>
+
+                    <small>
+                        Yesterday
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- Payment -->
+            <div
+                class="notification-item"
+                data-notification="payment"
+                onclick="
+                    openNotificationDetails('payment')
+                "
+            >
+
+                <div class="notification-icon payment-icon">
+                    💳
+                </div>
+
+                <div class="notification-content">
+
+                    <strong>
+                        Payment receipt
+                    </strong>
+
+                    <p>
+                        Your recent hospital payment
+                        receipt is available.
+                    </p>
+
+                    <small>
+                        2 days ago
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Footer -->
+        <div class="notification-footer">
+
+            <button
+                onclick="viewAllNotifications()"
+            >
+                View all notifications →
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     AI / NOTIFICATION OVERLAY
+========================================================= -->
+
+<div
+    class="notification-mobile-overlay"
+    id="notificationMobileOverlay"
+    onclick="closeNotificationCenter()"
+></div>
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+    =========================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
